@@ -1,1 +1,0 @@
-export function calculateEMI(principal:number,annualRate:number,years:number){const n=Math.round(years*12);if(principal<=0||n<=0)return {emi:0,total:0,interest:0};const r=annualRate/1200;const emi=r===0?principal/n:principal*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);return {emi,total:emi*n,interest:emi*n-principal};}
