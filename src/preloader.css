@@ -1,0 +1,104 @@
+.brand-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: #faf8f4;
+  opacity: 1;
+  transition: opacity 400ms ease;
+}
+
+.initial-loader.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.initial-loader-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #142b45;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.initial-loader-content.is-ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.initial-loader-content img {
+  width: 174px;
+  height: 174px;
+  object-fit: contain;
+  margin-bottom: 17px;
+}
+
+.initial-loader-content strong {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.initial-loader-content > span {
+  margin-top: 8px;
+  color: #7d8185;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.loader-line {
+  width: 112px;
+  height: 1px;
+  overflow: hidden;
+  margin-top: 29px;
+  background: #e9e5de;
+}
+
+.loader-line i {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: #c6a66b;
+  animation: loader-progress 1.25s ease-in-out infinite;
+}
+
+@keyframes loader-progress {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(280%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .initial-loader,
+  .initial-loader-content {
+    transition: none;
+  }
+
+  .loader-line i {
+    width: 100%;
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .brand-logo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .initial-loader-content img {
+    width: 148px;
+    height: 148px;
+  }
+}
